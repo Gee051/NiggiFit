@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaPhone, FaWhatsapp } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 
 const Contact = () => {
@@ -13,6 +13,10 @@ const Contact = () => {
   });
 
   const [message, setMessage] = useState("");
+  const formControls = useAnimation();
+  const imageControls = useAnimation();
+  const formRef = useRef(null);
+  const imageRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,34 +43,75 @@ const Contact = () => {
     }
   };
 
-
+  // Reset the message after 3 seconds
   useEffect(() => {
     if (message) {
       const timer = setTimeout(() => {
-        setMessage(""); 
+        setMessage("");
       }, 3000);
-      return () => clearTimeout(timer); 
+      return () => clearTimeout(timer);
     }
   }, [message]);
 
+  // Intersection Observer for form and image
+  useEffect(() => {
+    const formObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          formControls.start("visible");
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const imageObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          imageControls.start("visible");
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (formRef.current) {
+      formObserver.observe(formRef.current);
+    }
+
+    if (imageRef.current) {
+      imageObserver.observe(imageRef.current);
+    }
+
+    return () => {
+      if (formRef.current) formObserver.unobserve(formRef.current);
+      if (imageRef.current) imageObserver.unobserve(imageRef.current);
+    };
+  }, [formControls, imageControls]);
+
   return (
     <section id="contact" className="py-16 bg-[#110e11] text-white">
-      <motion.h1
-        className="font-extrabold text-3xl md:text-5xl text-center m-2 mb-4 text-oracolour"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      >
-        Get Fit! Don’t Quit with Niggifit!
-      </motion.h1>
+    <motion.h1
+          className="text-3xl md:text-5xl font-bold text-center mb-12 text-oracolour"
+          initial={{ opacity: 0, y: 100 }}
+          animate={formControls}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
+          Get Fit! Don`t Quit with Niggifit!
+        </motion.h1>
 
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
         {/* Contact Form */}
         <motion.form
+          ref={formRef}
           onSubmit={handleSubmit}
           className="w-full md:w-1/2 bg-black/50 p-8 rounded-lg shadow-lg"
           initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={formControls}
+          variants={{
+            visible: { opacity: 1, x: 0 },
+          }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
           <h1 className="text-5xl font-bold text-center mb-8 gradient-text">
@@ -151,9 +196,13 @@ const Contact = () => {
 
         {/* Image Section */}
         <motion.div
+          ref={imageRef}
           className="w-full md:w-1/2 flex flex-col items-center justify-center"
           initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={imageControls}
+          variants={{
+            visible: { opacity: 1, x: 0 },
+          }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
           <Image

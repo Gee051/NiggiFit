@@ -37,7 +37,7 @@ const Pricing = () => {
       <div className="container mx-auto px-4">
         {/* Heading */}
         <motion.h1
-          className="text-5xl font-bold text-center mb-12 gradient-text"
+          className="text-3xl md:text-5xl font-bold text-center mb-12 gradient-text"
           initial={{ opacity: 0, y: 100 }}
           animate={controls}
           variants={{
