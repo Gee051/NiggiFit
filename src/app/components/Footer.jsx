@@ -26,17 +26,16 @@ const Footer = () => {
   return (
     <footer className="bg-[#0f0f0f] text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8">
-          
+        {/* Main grid layout for Logo, Quick Links, and Newsletter */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           {/* Logo and Tagline Section */}
-          <div className="text-center md:text-left">
+          <div className="flex flex-col items-start space-y-4">
             <div className="mb-4">
               <Image
                 src="/assets/gymfit.png"
                 width={200}
                 height={200}
                 alt="Niggifit Logo"
-                className="mx-auto md:mx-0"
               />
             </div>
             <h2 className="text-4xl font-bold">NIGGIFIT</h2>
@@ -45,8 +44,8 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="text-center md:text-left">
-            <h3 className="text-2xl font-semibold mb-4 text-purcolour">Quick Links</h3>
+          <div className="flex flex-col items-start space-y-4">
+            <h3 className="text-2xl font-semibold text-purcolour">Quick Links</h3>
             <ul className="space-y-2">
               {["home", "about", "services", "pricing", "contact"].map((item) => (
                 <li key={item}>
@@ -65,18 +64,16 @@ const Footer = () => {
           </div>
 
           {/* Newsletter Subscription Section */}
-          <div className="text-center md:text-left w-full md:w-auto">
-            <h3 className="text-2xl font-semibold mb-4 text-purcolour">Subscribe to our Newsletter</h3>
-            <form onSubmit={handleSubscribe} className="flex flex-col md:flex-row items-center md:items-start">
+          <div className="flex flex-col items-start space-y-4 w-full">
+            <h3 className="text-2xl font-semibold text-purcolour">Subscribe to our Newsletter</h3>
+            <form onSubmit={handleSubscribe} className="w-full flex flex-col md:flex-row md:items-center">
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="p-3 w-full md:w-auto bg-gray-800 text-white rounded-lg outline-none focus:border-oracolour focus:ring-oracolour mb-4 md:mb-0 md:mr-4 transition-all"
+                className="p-3 w-full bg-gray-800 text-white rounded-lg outline-none focus:border-oracolour focus:ring-oracolour mb-4 md:mb-0 md:mr-4 transition-all"
                 required
-                onFocus={(e) => (e.target.placeholder = "")}
-                onBlur={(e) => (e.target.placeholder = "Enter your email")}
               />
               <button
                 type="submit"
@@ -93,17 +90,16 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Social Media Links Section */}
-        <div className="mt-16 text-center">
-          <div className="flex justify-center space-x-6">
+        {/* Centralized Social Media and Footer Copy Section */}
+        <div className="mt-12 flex flex-col items-center">
+          {/* Social Media Links */}
+          <div className="flex justify-center space-x-6 mb-4">
             <FaFacebook className="text-2xl hover:text-purcolour transition-all" />
             <FaInstagram className="text-2xl hover:text-purcolour transition-all" />
             <FaTwitter className="text-2xl hover:text-purcolour transition-all" />
           </div>
-        </div>
-
-        {/* Footer Copy Section */}
-        <div className="py-4 text-center mt-8">
+          
+          {/* Footer Copy */}
           <p className="text-sm">&copy; {new Date().getFullYear()} Niggifit. All Rights Reserved.</p>
         </div>
       </div>
@@ -119,10 +115,20 @@ const Footer = () => {
           transition: opacity 0.4s ease;
           opacity: 0;
         }
+
         @media (max-width: 768px) {
+          /* Ensure the logo and quick links align side by side on smaller screens */
+          .grid-cols-3 {
+            grid-template-columns: 1fr 1fr !important;
+          }
+
           .container {
             padding-left: 1rem;
             padding-right: 1rem;
+          }
+
+          .md\\:flex-row {
+            flex-direction: column !important;
           }
         }
       `}</style>

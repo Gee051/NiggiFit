@@ -15,8 +15,10 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const formControls = useAnimation();
   const imageControls = useAnimation();
+  const orButtonControls = useAnimation(); // Animation controls for the "OR" and button
   const formRef = useRef(null);
   const imageRef = useRef(null);
+  const orButtonRef = useRef(null); // Ref for the "OR" and button
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +55,7 @@ const Contact = () => {
     }
   }, [message]);
 
-  // Intersection Observer for form and image
+  // Intersection Observer for form, image, and "OR" button
   useEffect(() => {
     const formObserver = new IntersectionObserver(
       ([entry]) => {
@@ -73,33 +75,39 @@ const Contact = () => {
       { threshold: 0.1 }
     );
 
-    if (formRef.current) {
-      formObserver.observe(formRef.current);
-    }
+    const orButtonObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          orButtonControls.start("visible");
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-    if (imageRef.current) {
-      imageObserver.observe(imageRef.current);
-    }
+    if (formRef.current) formObserver.observe(formRef.current);
+    if (imageRef.current) imageObserver.observe(imageRef.current);
+    if (orButtonRef.current) orButtonObserver.observe(orButtonRef.current);
 
     return () => {
       if (formRef.current) formObserver.unobserve(formRef.current);
       if (imageRef.current) imageObserver.unobserve(imageRef.current);
+      if (orButtonRef.current) orButtonObserver.unobserve(orButtonRef.current);
     };
-  }, [formControls, imageControls]);
+  }, [formControls, imageControls, orButtonControls]);
 
   return (
     <section id="contact" className="py-16 bg-[#110e11] text-white">
-    <motion.h1
-          className="text-3xl md:text-5xl font-bold text-center mb-12 text-oracolour"
-          initial={{ opacity: 0, y: 100 }}
-          animate={formControls}
-          variants={{
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-        >
-          Get Fit! Don`t Quit with Niggifit!
-        </motion.h1>
+      <motion.h1
+        className="text-3xl md:text-5xl font-bold text-center mb-12 text-oracolour"
+        initial={{ opacity: 0, y: 100 }}
+        animate={formControls}
+        variants={{
+          visible: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+      >
+        Don’t quit! Get fit with Niggifit!
+      </motion.h1>
 
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
         {/* Contact Form */}
@@ -197,7 +205,7 @@ const Contact = () => {
         {/* Image Section */}
         <motion.div
           ref={imageRef}
-          className="w-full md:w-1/2 flex flex-col items-center justify-center"
+          className="w-full md:w-1/2 flex flex-col items-center justify-center pl-4"
           initial={{ opacity: 0, x: 100 }}
           animate={imageControls}
           variants={{
@@ -218,12 +226,24 @@ const Contact = () => {
         </motion.div>
       </div>
 
-      {/* Contact Information */}
-      <div className="flex items-center justify-center mt-12 space-x-4">
-        <FaPhone className="text-oracolour text-3xl" />
-        <span className="text-lg font-semibold">+234 816 000 6700</span>
-        <FaWhatsapp className="text-oracolour text-3xl" />
-      </div>
+      {/* OR and Phone Number Button Section */}
+      <motion.div
+        ref={orButtonRef}
+        className="flex flex-col md:flex-row justify-center items-center gap-4 mt-11"
+        initial={{ opacity: 0, y: 100 }}
+        animate={orButtonControls}
+        variants={{
+          visible: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+      >
+        <h1 className="text-xl md:text-2xl text-center text-purcolour font-extrabold">
+          OR
+        </h1>
+        <button className="px-6 py-3 bg-oracolour text-black font-bold rounded-xl hover:bg-purcolour transition-all text-lg md:text-2xl flex items-center gap-2">
+          <FaWhatsapp className="text-2xl md:text-3xl" /> +234 816 000 6700
+        </button>
+      </motion.div>
 
       {/* Gradient Text Styling */}
       <style jsx>{`

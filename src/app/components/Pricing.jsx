@@ -61,23 +61,26 @@ const Pricing = () => {
             }}
             transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
           >
-            <h2 className="text-3xl font-bold mb-4 text-purcolour">Monthly Plan</h2>
+            <h2 className="text-3xl font-bold mb-4 text-purcolour">
+              Monthly Plan
+            </h2>
             <p className="text-6xl font-extrabold mb-4">$30</p>
             <p className="text-lg text-gray-300 mb-6">
-              Perfect for those looking to get started with a short-term commitment.
+              Perfect for those looking to get started with a short-term
+              commitment.
             </p>
             <div className="space-y-4">
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Access to all equipment</span>
+                <span className="text-left">Access to all equipment</span>
               </div>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Expert trainer support</span>
+                <span className="text-left">Expert trainer support</span>
               </div>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Group fitness classes</span>
+                <span className="text-left">Group fitness classes</span>
               </div>
             </div>
           </motion.div>
@@ -93,27 +96,30 @@ const Pricing = () => {
             }}
             transition={{ duration: 0.8, ease: "easeInOut", delay: 0.4 }}
           >
-            <h2 className="text-3xl font-bold mb-4 text-purcolour">3-Month Plan</h2>
+            <h2 className="text-3xl font-bold mb-4 text-purcolour">
+              3-Month Plan
+            </h2>
             <p className="text-6xl font-extrabold mb-4">$80</p>
             <p className="text-lg text-gray-300 mb-6">
-              Commit for 3 months and save more with full access to all our services.
+              Commit for 3 months and save more with full access to all our
+              services.
             </p>
             <div className="space-y-4">
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Access to all equipment</span>
+                <span className="text-left">Access to all equipment</span>
               </div>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Expert trainer support</span>
+                <span className="text-left">Expert trainer support</span>
               </div>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Personalized workout plan</span>
+                <span className="text-left">Personalized workout plan</span>
               </div>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Diet and nutrition guidance</span>
+                <span className="text-left">Diet and nutrition guidance</span>
               </div>
             </div>
           </motion.div>
@@ -129,36 +135,40 @@ const Pricing = () => {
             }}
             transition={{ duration: 0.8, ease: "easeInOut", delay: 0.6 }}
           >
-            <h2 className="text-3xl font-bold mb-4 text-purcolour">Yearly Plan</h2>
+            <h2 className="text-3xl font-bold mb-4 text-purcolour">
+              Yearly Plan
+            </h2>
             <p className="text-6xl font-extrabold mb-4">$300</p>
             <p className="text-lg text-gray-300 mb-6">
-              Our best value plan. Enjoy all benefits with no restrictions for a full year.
+              Our best value plan. Enjoy all benefits with no restrictions for a
+              full year.
             </p>
             <div className="space-y-4">
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Access to all equipment</span>
+                <span className="text-left">Access to all equipment</span>
               </div>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Expert trainer support</span>
+                <span className="text-left">Expert trainer support</span>
               </div>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Personalized workout plan</span>
+                <span className="text-left">Personalized workout plan</span>
               </div>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Nutrition & wellness coaching</span>
+                <span className="text-left">
+                  Nutrition & wellness coaching
+                </span>
               </div>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-start items-center space-x-4">
                 <FaCheckCircle className="text-oracolour text-xl" />
-                <span>Free entry to events</span>
+                <span className="text-left">Free entry to events</span>
               </div>
             </div>
           </motion.div>
         </div>
-        
       </div>
 
       {/* Gradient Text Styling */}

@@ -85,7 +85,7 @@ const Services = () => {
           <SwiperSlide>
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-black/50 p-6 rounded-lg text-center shadow-lg transition-all duration-300 group"
+              className="bg-black/50 p-6 rounded-xl text-center shadow-lg transition-all duration-300 group h-72"
               initial={{ opacity: 0, x: -100 }}
               animate={controls}
               variants={{
@@ -111,7 +111,7 @@ const Services = () => {
           <SwiperSlide>
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-black/50 p-6 rounded-lg text-center shadow-lg transition-all duration-300 group"
+              className="bg-black/50 p-6 rounded-xl text-center shadow-lg transition-all duration-300 group h-72"
               initial={{ opacity: 0, x: -100 }}
               animate={controls}
               variants={{
@@ -137,7 +137,7 @@ const Services = () => {
           <SwiperSlide>
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-black/50 p-6 rounded-lg text-center shadow-lg transition-all duration-300 group"
+              className="bg-black/50 p-6 rounded-xl text-center shadow-lg transition-all duration-300 group h-72"
               initial={{ opacity: 0, x: 100 }}
               animate={controls}
               variants={{
@@ -162,7 +162,7 @@ const Services = () => {
           <SwiperSlide>
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-black/50 p-6 rounded-lg text-center shadow-lg transition-all duration-300 group"
+              className="bg-black/50 p-6 rounded-xl text-center shadow-lg transition-all duration-300 group h-72"
               initial={{ opacity: 0, x: 100 }}
               animate={controls}
               variants={{
@@ -229,14 +229,14 @@ const Services = () => {
                 Let`s build your strength together at{" "}
                 <span className="text-purcolour font-extrabold">Niggifit!</span>
               </p>
-              <button className="px-6 py-3 bg-oracolour text-black font-bold rounded-lg hover:bg-purcolour transition-all">
+              <button className="px-6 py-3 bg-oracolour text-black font-bold rounded-xl hover:bg-purcolour transition-all">
                 Choose your plan below
               </button>
             </motion.div>
 
           
             <motion.div
-              className="w-full md:w-1/2 flex justify-center md:mt-0 mt-4"
+              className="w-full md:w-1/2 flex justify-center md:mt-0 mt-4 p-2"
               initial={{ opacity: 0, x: 100 }}
               animate={burgerControls}
               variants={{
@@ -249,7 +249,7 @@ const Services = () => {
                 alt="Strong Burger"
                 width={400}
                 height={400}
-                className="rounded-lg"
+                className="rounded-xl"
               />
             </motion.div>
           </motion.div>

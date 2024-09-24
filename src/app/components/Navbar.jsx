@@ -16,7 +16,7 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  // Close menu when clicking outside or on any of the menu links
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -24,10 +24,10 @@ const Navbar = () => {
       }
     };
 
-    // Add click event listener
+
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Clean up the event listener when component unmounts
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] bg-black/60 backdrop-blur-md shadow-md z-50 rounded-full mt-3 px-6 py-2 flex justify-between items-center h-16">
-      {/* Logo on the left */}
+  
       <div
         className="flex-shrink-0 opacity-0 animate-fade-in"
         style={{ animationDelay: "0s" }}
@@ -52,7 +52,7 @@ const Navbar = () => {
             smooth={true}
             offset={-100}
             className="cursor-pointer text-lg font-medium text-white hover:text-purcolour relative group opacity-0 animate-fade-in"
-            style={{ animationDelay: `${(index + 1) * 1}s` }}
+            style={{ animationDelay: `${(index + 0.3) * 1}s` }}
             onClick={closeMenu}
           >
             {item.charAt(0).toUpperCase() + item.slice(1)}
